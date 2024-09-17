@@ -11,8 +11,7 @@ SENSOR_TYPES = {
     "FT_Temp": ["Temperature Cylinder 2 ", "°C", "temperature"],
     "EnergyD": ["Energy consumption Day", "kWh", "power"],
     "EnergyN": ["Energy consumption Night", "kWh", "power"],
-    "FirstCylinderOn": ["Heating Cylinder 1", None, None],
-    "SecondCylinderOn": ["Heating Cylinder 2", None, None],
+    "PowerFlag": ["Power Status (Power Flag)", None, None],
 }
 
 async def async_setup_entry(hass, entry, async_add_entities):
