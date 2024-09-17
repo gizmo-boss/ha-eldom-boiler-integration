@@ -1,1 +1,1 @@
-# Eldom Smart boiler Intergration
+# Eldom boiler Intergration

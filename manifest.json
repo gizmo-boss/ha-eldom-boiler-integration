@@ -6,5 +6,5 @@
   "codeowners": "@gizmo-boss",
   "iot_class": "cloud_polling",
   "config_flow": true,
-  "logo": "./logo.png"
+  "logo": "custom_components/ha-eldom-boiler-integration/logo.png"
 }

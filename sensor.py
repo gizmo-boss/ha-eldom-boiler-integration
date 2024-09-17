@@ -5,7 +5,6 @@ from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from .const import DOMAIN
 
 SENSOR_TYPES = {
-    "SoftwareVersion": ["Software Version", None, None],
     "SetTemp": ["Set Temperature", "°C", "temperature"],
     "State": ["Power State", None, None],
     "STL_Temp": ["Temperature Cylinder 1", "°C", "temperature"],
@@ -92,7 +91,7 @@ class EldomBoilerSensor(SensorEntity):
             "name": f"Eldom Boiler {self.boiler_id}",
             "manufacturer": "Eldom",
             "model": "Boiler",
-            "sw_version": sw_version,
+            "sw_version": '49',
         }
 
     @callback
