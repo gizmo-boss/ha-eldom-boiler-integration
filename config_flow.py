@@ -1,11 +1,10 @@
 import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.core import callback
-
 from .const import DOMAIN
 
 class EldomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Config flow for Eldom boiler ."""
+    """Config flow for Eldom Boiler."""
 
     VERSION = 1
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
@@ -14,6 +13,8 @@ class EldomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         """Handle the initial step."""
         errors = {}
         if user_input is not None:
+            email = user_input["email"]
+            password = user_input["password"]
             boiler_id = user_input["boiler_id"]
 
             await self.async_set_unique_id(boiler_id)
@@ -21,10 +22,12 @@ class EldomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
             return self.async_create_entry(
                 title=f"Eldom Boiler {boiler_id}",
-                data={"boiler_id": boiler_id}
+                data={"boiler_id": boiler_id, "email": email, "password": password}
             )
 
         data_schema = vol.Schema({
+            vol.Required("email"): str,
+            vol.Required("password"): str,
             vol.Required("boiler_id"): str,
         })
 

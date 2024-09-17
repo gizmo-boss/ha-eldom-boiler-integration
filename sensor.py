@@ -8,7 +8,7 @@ SENSOR_TYPES = {
     "SetTemp": ["Set Temperature", "°C", "temperature"],
     "State": ["Power State", None, None],
     "STL_Temp": ["Temperature Cylinder 1", "°C", "temperature"],
-    "FT_Temp": ["Temperature Cylinder 2 ", "°C", "temperature"],
+    "FT_Temp": ["Temperature Cylinder 2", "°C", "temperature"],
     "EnergyD": ["Energy consumption Day", "kWh", "power"],
     "EnergyN": ["Energy consumption Night", "kWh", "power"],
     "PowerFlag": ["Power Status (Power Flag)", None, None],
