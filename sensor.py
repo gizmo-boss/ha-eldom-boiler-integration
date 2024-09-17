@@ -5,15 +5,15 @@ from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from .const import DOMAIN
 
 SENSOR_TYPES = {
-    "SoftwareVersion": ["Software Version", None, "mdi:chip"],
+    "SoftwareVersion": ["Software Version", None, None],
     "SetTemp": ["Set Temperature", "°C", "temperature"],
-    "State": ["Power State", None, "mdi:toggle-switch"],
+    "State": ["Power State", None, None],
     "STL_Temp": ["Temperature Cylinder 1", "°C", "temperature"],
     "FT_Temp": ["Temperature Cylinder 2 ", "°C", "temperature"],
-    "EnergyD": ["Energy consumption Day", "kWh", "mdi:flash"],
-    "EnergyN": ["Energy consumption Night", "kWh", "mdi:flash"],
-    "FirstCylinderOn": ["Heating Cylinder 1", None, "mdi:toggle-switch"],
-    "SecondCylinderOn": ["Heating Cylinder 2", None, "mdi:toggle-switch"],
+    "EnergyD": ["Energy consumption Day", "kWh", "power"],
+    "EnergyN": ["Energy consumption Night", "kWh", "power"],
+    "FirstCylinderOn": ["Heating Cylinder 1", None, None],
+    "SecondCylinderOn": ["Heating Cylinder 2", None, None],
 }
 
 async def async_setup_entry(hass, entry, async_add_entities):
