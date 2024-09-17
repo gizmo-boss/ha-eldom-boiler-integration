@@ -1,1 +1,1 @@
-DOMAIN = "ha-eldom-boiler-integration"
+DOMAIN = "eldom"

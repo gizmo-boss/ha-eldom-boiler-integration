@@ -15,13 +15,13 @@ _LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup(hass: HomeAssistant, config: dict):
-    """Set up the Eldom Smart Boiler component."""
+    """Set up the Eldom boiler  component."""
     hass.data.setdefault(DOMAIN, {})
     return True
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
-    """Set up Eldom Smart Boiler from a config entry."""
+    """Set up Eldom boiler  from a config entry."""
     websocket_url = 'wss://myeldom.com/'
     boiler_id = entry.data["boiler_id"]
 

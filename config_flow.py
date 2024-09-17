@@ -5,7 +5,7 @@ from homeassistant.core import callback
 from .const import DOMAIN
 
 class EldomConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Config flow for Eldom Smart Boiler."""
+    """Config flow for Eldom boiler ."""
 
     VERSION = 1
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
