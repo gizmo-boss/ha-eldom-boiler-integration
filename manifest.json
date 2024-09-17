@@ -1,5 +1,5 @@
 {
-  "domain": "ha-eldom-boiler-integration",
+  "domain": "eldom",
   "name": "Eldom Boiler",
   "version": "1.0.0",
   "documentation": "https://github.com/gizmo-boss/ha-eldom-boiler-integration",
