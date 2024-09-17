@@ -12,7 +12,7 @@ _LOGGER = logging.getLogger(__name__)
 
 async def _do_login(session: ClientSession, email: str, password: str):
     """Login to the MyEldom server."""
-    url = 'https://myeldom.com/api/Account/Login'
+    url = 'https://myeldom.com/Account/Login'
     headers = {
         "Content-Type": "application/x-www-form-urlencoded",
         "Connection": "Keep-Alive",
