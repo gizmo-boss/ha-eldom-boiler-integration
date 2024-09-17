@@ -37,6 +37,7 @@ class EldomBoilerSensor(SensorEntity):
         self._device_class = SENSOR_TYPES[key][2]
         self._icon = SENSOR_TYPES[key][2] if not self._device_class else None
         self._unsubscribe_dispatcher = None
+        self.entity_id = f"sensor.{self.boiler_id.lower()}_{key.lower()}"
 
     async def async_added_to_hass(self):
         """Register callbacks."""
