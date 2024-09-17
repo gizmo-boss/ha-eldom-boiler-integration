@@ -5,17 +5,16 @@ from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from .const import DOMAIN
 
 SENSOR_TYPES = {
-    "DeviceID": ["Device ID", None, None],
-    "HardwareVersion": ["Hardware Version", None, "mdi:chip"],
     "SoftwareVersion": ["Software Version", None, "mdi:chip"],
     "SetTemp": ["Set Temperature", "°C", "temperature"],
-    "State": ["Power State", None, "mdi:power"],
-    "STL_Temp": ["Cylinder 1 Temperature", "°C", "temperature"],
-    "FT_Temp": ["Cylinder 2 Temperature", "°C", "temperature"],
-    "EnergyD": ["Energy Day", "kWh", "mdi:flash"],
-    "EnergyN": ["Energy Night", "kWh", "mdi:flash"],
+    "State": ["Power State", None, "mdi:toggle-switch"],
+    "STL_Temp": ["Temperature Cylinder 1", "°C", "temperature"],
+    "FT_Temp": ["Temperature Cylinder 2 ", "°C", "temperature"],
+    "EnergyD": ["Energy consumption Day", "kWh", "mdi:flash"],
+    "EnergyN": ["Energy consumption Night", "kWh", "mdi:flash"],
+    "FirstCylinderOn": ["Heating Cylinder 1", None, "mdi:toggle-switch"],
+    "SecondCylinderOn": ["Heating Cylinder 2", None, "mdi:toggle-switch"],
 }
-
 
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Eldom sensors based on a config entry."""
@@ -32,7 +31,7 @@ class EldomBoilerSensor(SensorEntity):
     def __init__(self, hass, key, name, unit, boiler_id):
         self.hass = hass
         self.key = key
-        self._name = f"{name} ({boiler_id})"
+        self._name = f"{name}"
         self._unit = unit
         self._state = None
         self.boiler_id = boiler_id
