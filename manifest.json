@@ -1,10 +1,10 @@
 {
-    "domain": "ha-eldom-boiler-integration",
-    "name": "Eldom Smart Boiler",
-    "version": "1.0.0",
-    "documentation": "https://github.com/gizmo-boss/ha-eldom-boiler-integration",
-    "codeowners": "@gizmo-boss",
-    "iot_class": "cloud_polling",
-    "config_flow": true
-  }
-  
+  "domain": "ha-eldom-boiler-integration",
+  "name": "Eldom Smart Boiler",
+  "version": "1.0.0",
+  "documentation": "https://github.com/gizmo-boss/ha-eldom-boiler-integration",
+  "codeowners": "@gizmo-boss",
+  "iot_class": "cloud_polling",
+  "config_flow": true,
+  "logo": "logo.png"
+}

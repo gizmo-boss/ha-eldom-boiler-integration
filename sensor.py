@@ -5,15 +5,15 @@ from homeassistant.helpers.dispatcher import async_dispatcher_connect
 from .const import DOMAIN
 
 SENSOR_TYPES = {
-    "DeviceID": ["Device ID", None],
-    "HardwareVersion": ["Hardware Version", None],
-    "SoftwareVersion": ["Software Version", None],
-    "SetTemp": ["Set Temperature", "°C"],
-    "State": ["Power State", None],
-    "STL_Temp": ["Cylinder 1 Temperature", "°C"],
-    "FT_Temp": ["Cylinder 2 Temperature", "°C"],
-    "EnergyD": ["Energy Day", "kWh"],
-    "EnergyN": ["Energy Night", "kWh"],
+    "DeviceID": ["Device ID", None, None],
+    "HardwareVersion": ["Hardware Version", None, "mdi:chip"],
+    "SoftwareVersion": ["Software Version", None, "mdi:chip"],
+    "SetTemp": ["Set Temperature", "°C", "temperature"],
+    "State": ["Power State", None, "mdi:power"],
+    "STL_Temp": ["Cylinder 1 Temperature", "°C", "temperature"],
+    "FT_Temp": ["Cylinder 2 Temperature", "°C", "temperature"],
+    "EnergyD": ["Energy Day", "kWh", "mdi:flash"],
+    "EnergyN": ["Energy Night", "kWh", "mdi:flash"],
 }
 
 
@@ -36,6 +36,8 @@ class EldomBoilerSensor(SensorEntity):
         self._unit = unit
         self._state = None
         self.boiler_id = boiler_id
+        self._device_class = SENSOR_TYPES[key][2]
+        self._icon = SENSOR_TYPES[key][2] if not self._device_class else None
         self._unsubscribe_dispatcher = None
 
     async def async_added_to_hass(self):
@@ -68,6 +70,27 @@ class EldomBoilerSensor(SensorEntity):
     def unit_of_measurement(self):
         """Return the unit of measurement."""
         return self._unit
+
+    @property
+    def device_class(self):
+        """Return the device class of the sensor."""
+        return self._device_class
+
+    @property
+    def icon(self):
+        """Return the icon of the sensor."""
+        return self._icon
+
+    @property
+    def device_info(self):
+        """Return device information about this Eldom boiler."""
+        return {
+            "identifiers": {(DOMAIN, self.boiler_id)},
+            "name": f"Eldom Boiler {self.boiler_id}",
+            "manufacturer": "Eldom",
+            "model": "Smart Boiler",
+            "sw_version": self.hass.data[DOMAIN][self.boiler_id].get('SoftwareVersion', 'Unknown'),
+        }
 
     @callback
     def _handle_data(self):
