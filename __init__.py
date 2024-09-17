@@ -18,7 +18,7 @@ async def _do_login(session: ClientSession, email: str, password: str):
         "Connection": "Keep-Alive",
     }
     login_data = {"Email": email, "Password": password}
-
+    _LOGGER.info(url, login_data)
     try:
         async with session.post(url, data=login_data, headers=headers, allow_redirects=False) as resp:
             if resp.status == 302:
