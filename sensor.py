@@ -84,13 +84,14 @@ class EldomBoilerSensor(SensorEntity):
     def device_info(self):
         """Return device information about this Eldom boiler."""
         data = self.hass.data[DOMAIN].get(self.boiler_id)
-        sw_version = data.get('SoftwareVersion', 'Unknown') if data else 'Unknown'
+        device_data = data.get('Data', [])[0] if data else {}
+        sw_version = device_data.get('SoftwareVersion', 'Unknown')
         
         return {
             "identifiers": {(DOMAIN, self.boiler_id)},
             "name": f"Eldom Boiler {self.boiler_id}",
             "manufacturer": "Eldom",
-            "model": "Smart Boiler",
+            "model": "Boiler",
             "sw_version": sw_version,
         }
 
